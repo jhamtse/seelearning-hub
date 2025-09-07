@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Families Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .quiz-container {
+            padding: 30px;
+        }
+
+        .question-container {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .question-container.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f2f6;
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .progress-bar {
+            flex: 1;
+            margin: 0 20px;
+            height: 8px;
+            background: #f1f2f6;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #fd79a8, #e84393);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .question-text {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2f3542;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .options {
+            display: grid;
+            gap: 15px;
+        }
+
+        .option {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option:hover {
+            border-color: #fd79a8;
+            background: #f1f2f6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(253, 121, 168, 0.2);
+        }
+
+        .option.selected {
+            border-color: #fd79a8;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd9);
+        }
+
+        .option.correct {
+            border-color: #27ae60;
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+        }
+
+        .option.incorrect {
+            border-color: #e74c3c;
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+        }
+
+        .option.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .option-letter {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #6c757d;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(253, 121, 168, 0.3);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .results {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .results.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 0 auto 30px;
+            box-shadow: 0 10px 30px rgba(39, 174, 96, 0.3);
+        }
+
+        .score-text {
+            font-size: 1.5em;
+            color: #2f3542;
+            margin-bottom: 20px;
+        }
+
+        .score-details {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .emoji {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .start-screen {
+            text-align: center;
+            padding: 40px;
+        }
+
+        .start-screen h2 {
+            color: #2f3542;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .start-screen p {
+            color: #6c757d;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .quiz-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .quiz-info h3 {
+            color: #fd79a8;
+            margin-bottom: 15px;
+        }
+
+        .quiz-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .quiz-info li {
+            padding: 5px 0;
+            color: #6c757d;
+        }
+
+        .quiz-info li:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎭 Emotion Families Quiz</h1>
+            <p>Grouping Similar Emotions Together</p>
+        </div>
+
+        <div class="start-screen" id="startScreen">
+            <h2>Learn About Emotion Families!</h2>
+            <p>Test your knowledge about how emotions can be grouped together based on their similarities and understand different types of feelings.</p>
+            
+            <div class="quiz-info">
+                <h3>Quiz Information:</h3>
+                <ul>
+                    <li>4 multiple choice questions</li>
+                    <li>Focus on emotion families and groupings</li>
+                    <li>Learn how emotions are related to each other</li>
+                    <li>Practice identifying different emotion categories</li>
+                </ul>
+            </div>
+
+            <button class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+        </div>
+
+        <div class="quiz-container" id="quizContainer" style="display: none;">
+            <div class="question-header">
+                <div class="question-number" id="questionNumber">1 of 4</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div id="questionsContainer"></div>
+
+            <div class="navigation">
+                <button class="btn btn-secondary" id="prevBtn" onclick="previousQuestion()" disabled>Previous</button>
+                <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" disabled>Next Question</button>
+            </div>
+        </div>
+
+        <div class="results" id="results">
+            <div class="emoji" id="resultEmoji">🎉</div>
+            <div class="score-circle" id="scoreCircle">0%</div>
+            <div class="score-text" id="scoreText">Great job!</div>
+            <div class="score-details" id="scoreDetails"></div>
+            <button class="btn btn-primary" onclick="restartQuiz()">Take Quiz Again</button>
+        </div>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "Which of the following emotions do not belong in the same \"emotion family\"?",
+                options: [
+                    "happy",
+                    "joyful",
+                    "frustrated",
+                    "excited"
+                ],
+                correct: 2
+            },
+            {
+                question: "What are \"emotion families\"?",
+                options: [
+                    "Groups of people who feel the same way",
+                    "Emotions that don't go together",
+                    "Emotions that share similarities and can be grouped together",
+                    "Family members who show emotions"
+                ],
+                correct: 2
+            },
+            {
+                question: "Which of these emotions belongs to the \"happy\" family?",
+                options: [
+                    "Nervous",
+                    "Gloomy",
+                    "Joyful",
+                    "Angry"
+                ],
+                correct: 2
+            },
+            {
+                question: "If someone is feeling \"frustrated,\" which emotion family might that belong to?",
+                options: [
+                    "Happy family",
+                    "Angry family",
+                    "Scared family",
+                    "Sad family"
+                ],
+                correct: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let selectedAnswer = null;
+        let quizStarted = false;
+
+        function startQuiz() {
+            document.getElementById('startScreen').style.display = 'none';
+            document.getElementById('quizContainer').style.display = 'block';
+            quizStarted = true;
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const container = document.getElementById('questionsContainer');
+            const question = questions[currentQuestion];
+            
+            container.innerHTML = `
+                <div class="question-container active">
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">
+                        ${question.options.map((option, index) => `
+                            <div class="option" onclick="selectAnswer(${index})">
+                                <span class="option-letter">${String.fromCharCode(97 + index)})</span>
+                                ${option}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+
+            updateProgress();
+            updateNavigation();
+            selectedAnswer = null;
+        }
+
+        function selectAnswer(answerIndex) {
+            if (selectedAnswer !== null) return;
+
+            selectedAnswer = answerIndex;
+            const options = document.querySelectorAll('.option');
+            const correctIndex = questions[currentQuestion].correct;
+
+            options.forEach((option, index) => {
+                option.classList.add('disabled');
+                if (index === correctIndex) {
+                    option.classList.add('correct');
+                } else if (index === answerIndex && index !== correctIndex) {
+                    option.classList.add('incorrect');
+                }
+                if (index === answerIndex) {
+                    option.classList.add('selected');
+                }
+            });
+
+            if (answerIndex === correctIndex) {
+                score++;
+            }
+
+            document.getElementById('nextBtn').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (selectedAnswer === null) return;
+
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                score = Math.max(0, score - (selectedAnswer === questions[currentQuestion + 1].correct ? 1 : 0));
+                displayQuestion();
+            }
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('questionNumber').textContent = `${currentQuestion + 1} of ${questions.length}`;
+        }
+
+        function updateNavigation() {
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = true;
+            
+            if (currentQuestion === questions.length - 1) {
+                document.getElementById('nextBtn').textContent = 'Finish Quiz';
+            } else {
+                document.getElementById('nextBtn').textContent = 'Next Question';
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quizContainer').style.display = 'none';
+            document.getElementById('results').classList.add('active');
+
+            const percentage = Math.round((score / questions.length) * 100);
+            const scoreCircle = document.getElementById('scoreCircle');
+            const scoreText = document.getElementById('scoreText');
+            const scoreDetails = document.getElementById('scoreDetails');
+            const resultEmoji = document.getElementById('resultEmoji');
+
+            scoreCircle.textContent = percentage + '%';
+
+            let message, emoji;
+            if (percentage >= 90) {
+                message = "Fantastic! You understand emotion families perfectly!";
+                emoji = "🏆";
+                scoreCircle.style.background = 'linear-gradient(135deg, #f39c12, #e74c3c)';
+            } else if (percentage >= 80) {
+                message = "Great work! You have a good grasp of emotion groupings!";
+                emoji = "🎉";
+            } else if (percentage >= 70) {
+                message = "Good job! You're learning how emotions are related!";
+                emoji = "👍";
+            } else if (percentage >= 60) {
+                message = "Keep practicing! Think about which emotions feel similar!";
+                emoji = "😊";
+            } else {
+                message = "Keep learning! Practice grouping emotions that feel alike!";
+                emoji = "📚";
+                scoreCircle.style.background = 'linear-gradient(135deg, #95a5a6, #7f8c8d)';
+            }
+
+            resultEmoji.textContent = emoji;
+            scoreText.textContent = message;
+            scoreDetails.innerHTML = `
+                <h3>Quiz Results</h3>
+                <p><strong>Questions Answered Correctly:</strong> ${score} out of ${questions.length}</p>
+                <p><strong>Accuracy:</strong> ${percentage}%</p>
+                <p><strong>Grade:</strong> ${getLetterGrade(percentage)}</p>
+            `;
+        }
+
+        function getLetterGrade(percentage) {
+            if (percentage >= 90) return 'A';
+            if (percentage >= 80) return 'B';
+            if (percentage >= 70) return 'C';
+            if (percentage >= 60) return 'D';
+            return 'F';
+        }
+
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            selectedAnswer = null;
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('startScreen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
