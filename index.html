@@ -1,642 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEE Learning Interactive Hub</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        /* Header */
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #667eea;
-            text-decoration: none;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: #667eea;
-        }
-
-        /* Main Content */
-        .main-content {
-            margin-top: 80px;
-            padding: 2rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            color: white;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-        }
-
-        .cta-button {
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(240, 147, 251, 0.6);
-        }
-
-        /* Games Section */
-        .games-section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 3rem;
-        }
-
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .game-card {
-            background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            cursor: pointer;
-        }
-
-        .game-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            border-color: #667eea;
-        }
-
-        .game-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .game-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 1rem;
-        }
-
-        .game-description {
-            color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .game-features {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .game-features li {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-
-        .game-features li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #4CAF50;
-            font-weight: bold;
-        }
-
-        .play-button {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .play-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        /* Game Container */
-        .game-container {
-            display: none;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 20px;
-            padding: 2rem;
-            margin: 2rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .game-container.active {
-            display: block;
-        }
-
-        .game-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .back-button {
-            background: #f0f0f0;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .back-button:hover {
-            background: #e0e0e0;
-        }
-
-        /* Game-specific styles */
-        .resilient-character {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            transition: all 0.5s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3em;
-            cursor: pointer;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .resilient { 
-            background: linear-gradient(45deg, #90EE90, #98FB98);
-            border: 4px solid #32CD32;
-            box-shadow: 0 0 20px rgba(50, 205, 50, 0.3);
-        }
-        
-        .high-zone { 
-            background: linear-gradient(45deg, #FFB6C1, #FFA07A);
-            border: 4px solid #FF6347;
-            box-shadow: 0 0 20px rgba(255, 99, 71, 0.3);
-            animation: shake 0.5s ease-in-out infinite;
-        }
-        
-        .low-zone { 
-            background: linear-gradient(45deg, #B0C4DE, #D3D3D3);
-            border: 4px solid #708090;
-            box-shadow: 0 0 20px rgba(112, 128, 144, 0.3);
-            opacity: 0.7;
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0) translateY(-10px); }
-            25% { transform: translateX(-5px) translateY(-10px); }
-            75% { transform: translateX(5px) translateY(-10px); }
-        }
-
-        .zone-indicator {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin: 15px 0;
-            text-align: center;
-        }
-
-        .scenario-box {
-            background: #f0f8ff;
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 5px solid #4CAF50;
-            text-align: center;
-        }
-
-        .tools-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-
-        .tool-button {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-
-        .tool-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-
-        .breathing-circle {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            margin: 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5em;
-            font-weight: bold;
-            transition: all 1s ease;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-        }
-
-        .breathing-circle.inhale {
-            transform: scale(1.4);
-            background: linear-gradient(45deg, #f093fb, #f5576c);
-        }
-
-        .breathing-circle.exhale {
-            transform: scale(0.8);
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
-        }
-
-        .activity-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .tab-button {
-            background: #f0f0f0;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .tab-button.active {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-        }
-
-        .emotion-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .emotion-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid #f0f0f0;
-        }
-
-        .emotion-card:hover {
-            transform: translateY(-3px);
-            border-color: #667eea;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .emotion-emoji {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .feedback {
-            background: #e8f5e8;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-            border: 2px solid #4CAF50;
-            color: #2E8B57;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .game-stats {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .stat-item {
-            display: inline-block;
-            margin: 0 15px;
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .games-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .tools-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tool-button {
-                width: 80%;
-                max-width: 300px;
-            }
-            
-            .nav-menu {
-                display: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="nav-container">
-            <a href="#" class="logo" onclick="showHome()">
-    <img src="logo.png" alt="School Logo" style="height: 80px; vertical-align: middle; margin-right: 10px;">
-    SEE Learning Hub
-</a>
-            <nav class="nav-menu">
-                <li><a href="#" onclick="showHome()">Home</a></li>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#about">About</a></li>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <!-- Home Page -->
-            <div id="home-page">
-                <!-- Hero Section -->
-                <section class="hero">
-                    <h1>SEE Learning Interactive Hub</h1>
-                    <p>Develop awareness, compassion, and engagement through fun, research-based games and activities. Perfect for schools implementing Social, Emotional, and Ethical Learning.</p>
-                    <button class="cta-button" onclick="document.getElementById('games').scrollIntoView({behavior: 'smooth'})">Start Learning</button>
-                </section>
-
-                <!-- Games Section -->
-                <section id="games" class="games-section">
-                    <h2 class="section-title">Interactive Learning Games</h2>
-                    <div class="games-grid">
-                        <div class="game-card" onclick="playGame('resilient-zone')">
-                            <div class="game-icon">🌟</div>
-                            <h3 class="game-title">Resilient Zone Adventure</h3>
-                            <p class="game-description">Help our friend stay balanced using body regulation skills and nervous system awareness.</p>
-                            <ul class="game-features">
-                                <li>Learn about the three zones (Resilient, High, Low)</li>
-                                <li>Practice grounding, breathing, and resourcing</li>
-                                <li>Build emotional regulation skills</li>
-                                <li>Trauma-informed approach</li>
-                            </ul>
-                            <button class="play-button">Play Now</button>
-                        </div>
-
-                        <div class="game-card" onclick="playGame('mindful-heart')">
-                            <div class="game-icon">🧠💝</div>
-                            <h3 class="game-title">Mindful Heart Explorer</h3>
-                            <p class="game-description">Train attention and explore emotions through mindfulness and emotional literacy activities.</p>
-                            <ul class="game-features">
-                                <li>Mindful breathing practice</li>
-                                <li>Emotion detective scenarios</li>
-                                <li>Focus training games</li>
-                                <li>Body awareness exercises</li>
-                            </ul>
-                            <button class="play-button">Play Now</button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- About Section -->
-                <section id="about" class="games-section">
-                    <h2 class="section-title">About SEE Learning</h2>
-                    <p style="text-align: center; font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
-                        Social, Emotional, and Ethical (SEE) Learning is a comprehensive framework developed by Emory University that integrates mindfulness, compassion, and systems thinking into education. Our interactive platform brings these evidence-based concepts to life through engaging games and activities that help students develop crucial life skills.
-                    </p>
-                </section>
-            </div>
-
-            <!-- Resilient Zone Game -->
-            <div id="resilient-zone-game" class="game-container">
-                <div class="game-header">
-                    <h2>🌟 Resilient Zone Adventure</h2>
-                    <button class="back-button" onclick="showHome()">← Back to Games</button>
-                </div>
-                
-                <div class="resilient-character resilient" id="character" onclick="nextScenario()">😊</div>
-                <div class="zone-indicator" id="zoneText">In the Resilient Zone - Feeling Balanced! 🌟</div>
-                
-                <div class="scenario-box" id="scenario">
-                    Welcome! Click on our friend above to see how they're feeling. When they move out of the green Resilient Zone, use the SEE Learning tools below to help them return to balance.
-                </div>
-
-                <div class="tools-container">
-                    <button class="tool-button" onclick="useBreathing()">🌬️ Deep Breathing</button>
-                    <button class="tool-button" onclick="useGrounding()">🌱 Grounding</button>
-                    <button class="tool-button" onclick="useResource()">💝 Think Good Thoughts</button>
-                    <button class="tool-button" onclick="useMovement()">🏃 Movement Break</button>
-                </div>
-
-                <div id="feedback" class="feedback" style="display: none;"></div>
-
-                <div class="game-stats">
-                    <div class="stat-item">Resilience Points: <span id="resilienceScore">0</span></div>
-                    <div class="stat-item">Scenarios Completed: <span id="scenarioCount">0</span></div>
-                </div>
-            </div>
-
-            <!-- Mindful Heart Game -->
-            <div id="mindful-heart-game" class="game-container">
-                <div class="game-header">
-                    <h2>🧠💝 Mindful Heart Explorer</h2>
-                    <button class="back-button" onclick="showHome()">← Back to Games</button>
-                </div>
-
-                <div class="activity-tabs">
-                    <button class="tab-button active" onclick="showActivity('breathing')">🌬️ Breathing</button>
-                    <button class="tab-button" onclick="showActivity('emotions')">❤️ Emotions</button>
-                    <button class="tab-button" onclick="showActivity('focus')">🎯 Focus</button>
-                </div>
-
-                <div id="activity-content">
-                    <!-- Content will be loaded here -->
-                </div>
-
-                <div class="game-stats">
-                    <div class="stat-item">Attention Points: <span id="attentionScore">0</span></div>
-                    <div class="stat-item">Mindful Minutes: <span id="mindfulMinutes">0</span></div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        // Game state variables
-        let currentZone = 'resilient';
-        let resilienceScore = 0;
-        let scenarioCount = 0;
-        let attentionScore = 0;
-        let mindfulMinutes = 0;
-        let breathingActive = false;
-        let breathingInterval;
-
-        // Scenarios for Resilient Zone game
-        const scenarios = [
-            {
-                text: "Oh no! Our friend just heard some loud, unexpected noises and feels startled and anxious.",
-                zone: 'high',
-                emotion: '😰'
-            },
-            {
-                text: "Our friend is feeling overwhelmed by too much homework and tests coming up.",
-                zone: 'high',
-                emotion: '😫'
-            },
-            {
-                text: "It's been a long day and our friend feels tired, sad, and disconnected.",
-                zone: 'low',
-                emotion: '😔'
-            },
-            {
-                text: "Our friend is worried about making new friends at school.",
-                zone: 'high',
-                emotion: '😟'
-            },
-            {
-                text: "After lunch, our friend feels sleepy and unmotivated.",
-                zone: 'low',
-                emotion: '😴'
-            }
-        ];
-
-        let currentScenarioIndex = 0;
-
-        // Navigation functions
-        function showHome() {
-            document.getElementById('home-page').style.display = 'block';
-            document.getElementById('resilient-zone-game').classList.remove('active');
-            document.getElementById('mindful-heart-game').classList.remove('active');
-        }
-
-        function playGame(gameType) {
+function playGame(gameType) {
             document.getElementById('home-page').style.display = 'none';
             
             if (gameType === 'resilient-zone') {
@@ -645,273 +7,393 @@
             } else if (gameType === 'mindful-heart') {
                 document.getElementById('mindful-heart-game').classList.add('active');
                 showActivity('breathing');
+            } else if (gameType === 'emotion-quizzes') {
+                document.getElementById('emotion-quizzes-game').classList.add('active');
+                showQuizSelection();
             }
         }
 
-        // Resilient Zone Game Functions
-        function resetResilientGame() {
-            currentZone = 'resilient';
-            currentScenarioIndex = 0;
-            updateCharacter('resilient', '😊');
-            document.getElementById('scenario').textContent = "Welcome! Click on our friend above to see how they're feeling. When they move out of the green Resilient Zone, use the SEE Learning tools below to help them return to balance.";
-            hideFeedback();
-        }
+        // Quiz System Variables
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let quizScore = 0;
+        let selectedAnswer = null;
+        let quizData = {};
 
-        function updateCharacter(zone, emotion) {
-            const character = document.getElementById('character');
-            const zoneText = document.getElementById('zoneText');
-            
-            character.className = `resilient-character ${zone}`;
-            character.textContent = emotion;
-            
-            switch(zone) {
-                case 'resilient':
-                    zoneText.textContent = 'In the Resilient Zone - Feeling Balanced! 🌟';
-                    break;
-                case 'high':
-                    zoneText.textContent = 'In the High Zone - Feeling Anxious or Overwhelmed 🔥';
-                    break;
-                case 'low':
-                    zoneText.textContent = 'In the Low Zone - Feeling Tired or Disconnected 🌧️';
-                    break;
-            }
-            currentZone = zone;
-        }
-
-        function nextScenario() {
-            if (currentZone === 'resilient' && currentScenarioIndex < scenarios.length) {
-                const scenario = scenarios[currentScenarioIndex];
-                document.getElementById('scenario').textContent = scenario.text;
-                updateCharacter(scenario.zone, scenario.emotion);
-                currentScenarioIndex++;
-                if (currentScenarioIndex >= scenarios.length) {
-                    currentScenarioIndex = 0; // Reset for replay
-                }
-            }
-        }
-
-        function showFeedback(message) {
-            const feedback = document.getElementById('feedback');
-            feedback.textContent = message;
-            feedback.style.display = 'block';
-            setTimeout(hideFeedback, 3000);
-        }
-
-        function hideFeedback() {
-            document.getElementById('feedback').style.display = 'none';
-        }
-
-        function updateScore(points) {
-            resilienceScore += points;
-            document.getElementById('resilienceScore').textContent = resilienceScore;
-            if (currentZone !== 'resilient') {
-                scenarioCount++;
-                document.getElementById('scenarioCount').textContent = scenarioCount;
-            }
-        }
-
-        function useBreathing() {
-            if (currentZone !== 'resilient') {
-                updateCharacter('resilient', '😊');
-                showFeedback('Deep breathing helped calm the nervous system! 🌬️ Taking slow, deep breaths activates our body\'s relaxation response.');
-                updateScore(10);
-                setTimeout(() => {
-                    document.getElementById('scenario').textContent = "Great job! Click on our friend for the next challenge.";
-                }, 2000);
-            } else {
-                showFeedback('Nice practice! Deep breathing always helps us stay centered. 🧘‍♀️');
-                updateScore(5);
-            }
-        }
-
-        function useGrounding() {
-            if (currentZone !== 'resilient') {
-                updateCharacter('resilient', '😊');
-                showFeedback('Grounding worked! 🌱 Feeling our feet on the ground and noticing what supports us helps us feel safe and stable.');
-                updateScore(10);
-                setTimeout(() => {
-                    document.getElementById('scenario').textContent = "Great job! Click on our friend for the next challenge.";
-                }, 2000);
-            } else {
-                showFeedback('Great grounding practice! 🦶 Connecting with what supports us builds resilience.');
-                updateScore(5);
-            }
-        }
-
-        function useResource() {
-            if (currentZone !== 'resilient') {
-                updateCharacter('resilient', '😊');
-                showFeedback('Thinking of something good helped! 💝 Remembering positive people, places, or experiences helps our nervous system feel safe.');
-                updateScore(10);
-                setTimeout(() => {
-                    document.getElementById('scenario').textContent = "Great job! Click on our friend for the next challenge.";
-                }, 2000);
-            } else {
-                showFeedback('Beautiful! 🌟 Focusing on our resources strengthens our inner resilience.');
-                updateScore(5);
-            }
-        }
-
-        function useMovement() {
-            if (currentZone !== 'resilient') {
-                updateCharacter('resilient', '😊');
-                showFeedback('Movement helped! 🏃 Physical activity helps release stress and brings us back to balance.');
-                updateScore(10);
-                setTimeout(() => {
-                    document.getElementById('scenario').textContent = "Great job! Click on our friend for the next challenge.";
-                }, 2000);
-            } else {
-                showFeedback('Great movement! 💪 Moving our body helps keep our energy balanced.');
-                updateScore(5);
-            }
-        }
-
-        // Mindful Heart Game Functions
-        function showActivity(activityType) {
-            // Update tab buttons
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const content = document.getElementById('activity-content');
-            
-            if (activityType === 'breathing') {
-                content.innerHTML = `
-                    <div style="text-align: center;">
-                        <h3>🌬️ Mindful Breathing Practice</h3>
-                        <p>Follow the circle as it grows and shrinks. Breathe in when it grows, breathe out when it shrinks.</p>
-                        <div class="breathing-circle" id="breathingCircle" onclick="toggleBreathing()">Click to Start</div>
-                        <p id="breathingText">Click the circle to begin breathing practice</p>
-                        <button class="tool-button" onclick="stopBreathing()" style="margin-top: 15px;">Stop Practice</button>
-                    </div>
-                `;
-            } else if (activityType === 'emotions') {
-                content.innerHTML = `
-                    <div style="text-align: center;">
-                        <h3>❤️ Emotion Detective</h3>
-                        <p id="emotionPrompt">How are you feeling right now? Click on the emotion that matches your current feeling:</p>
-                        <div class="emotion-grid">
-                            <div class="emotion-card" onclick="selectEmotion('Happy', '😊')">
-                                <div class="emotion-emoji">😊</div>
-                                <div>Happy</div>
-                            </div>
-                            <div class="emotion-card" onclick="selectEmotion('Sad', '😢')">
-                                <div class="emotion-emoji">😢</div>
-                                <div>Sad</div>
-                            </div>
-                            <div class="emotion-card" onclick="selectEmotion('Excited', '🤩')">
-                                <div class="emotion-emoji">🤩</div>
-                                <div>Excited</div>
-                            </div>
-                            <div class="emotion-card" onclick="selectEmotion('Worried', '😰')">
-                                <div class="emotion-emoji">😰</div>
-                                <div>Worried</div>
-                            </div>
-                            <div class="emotion-card" onclick="selectEmotion('Calm', '😌')">
-                                <div class="emotion-emoji">😌</div>
-                                <div>Calm</div>
-                            </div>
-                            <div class="emotion-card" onclick="selectEmotion('Confused', '🤔')">
-                                <div class="emotion-emoji">🤔</div>
-                                <div>Confused</div>
-                            </div>
-                        </div>
-                        <div id="emotionFeedback" style="margin-top: 20px; min-height: 50px;"></div>
-                    </div>
-                `;
-            } else if (activityType === 'focus') {
-                content.innerHTML = `
-                    <div style="text-align: center;">
-                        <h3>🎯 Focus Training</h3>
-                        <p>Count how many ⭐ stars you can find in the sequence below:</p>
-                        <div style="font-size: 2em; line-height: 1.5; margin: 20px 0; background: #f8f9fa; padding: 20px; border-radius: 10px;">
-                            ⭐ 🌙 ⭐ 🌟 ⭐ 🌙 ⭐ 🌟 ⭐ 🌙 ⭐
-                        </div>
-                        <button class="tool-button" onclick="checkFocus()">I counted them!</button>
-                        <div id="focusFeedback" style="margin-top: 20px; min-height: 50px;"></div>
-                    </div>
-                `;
-            }
-        }
-
-        function toggleBreathing() {
-            if (!breathingActive) {
-                startBreathing();
-            }
-        }
-
-        function startBreathing() {
-            const circle = document.getElementById('breathingCircle');
-            const text = document.getElementById('breathingText');
-            
-            if (!breathingActive) {
-                breathingActive = true;
-                let phase = 'inhale';
-                let seconds = 0;
-                
-                circle.textContent = 'Breathe In';
-                
-                breathingInterval = setInterval(() => {
-                    seconds++;
-                    if (seconds % 30 === 0) {
-                        mindfulMinutes++;
-                        document.getElementById('mindfulMinutes').textContent = mindfulMinutes;
+        // Quiz Questions Data
+        const quizzes = {
+            'needs-wants': {
+                title: 'Needs vs Wants Quiz',
+                icon: '🎯',
+                theme: 'linear-gradient(135deg, #2ecc71, #27ae60)',
+                questions: [
+                    {
+                        question: "Which of the following statements is true?",
+                        options: [
+                            "Everyone needs a pencil to survive",
+                            "We all share the need to have clean drinking water",
+                            "Only some people need love for a healthy life",
+                            "A new phone is a shared need that everyone has"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Which of the following is not a basic human need for happiness, life, and learning?",
+                        options: [
+                            "safety",
+                            "video games",
+                            "water",
+                            "shelter"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "To want something does NOT mean which of the following?",
+                        options: [
+                            "To need something",
+                            "To be wishful for something",
+                            "To desire something",
+                            "To know something"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "Which of the following statements is true about needs and wants?",
+                        options: [
+                            "All these statements are correct",
+                            "Wants can change from person to person",
+                            "Needs are things necessary for a healthy life",
+                            "Needs are essential regardless of personal preference"
+                        ],
+                        correct: 0
+                    },
+                    {
+                        question: "If someone feels happy and safe, this probably means:",
+                        options: [
+                            "Their basic needs aren't being met",
+                            "Their basic needs are being met",
+                            "They don't have any needs",
+                            "None of the options apply"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What are the five necessities for a happy and healthy life?",
+                        options: [
+                            "Seeing, hearing, tasting, touching, smelling",
+                            "Food, water, shelter, clothing, and love",
+                            "Money, jewelry, video games, pets, and vacations",
+                            "Running, jumping, swimming, cycling, dancing"
+                        ],
+                        correct: 1
                     }
-                    
-                    if (phase === 'inhale') {
-                        circle.className = 'breathing-circle inhale';
-                        text.textContent = 'Breathe In... 🌬️';
-                        phase = 'exhale';
-                        attentionScore += 1;
-                        document.getElementById('attentionScore').textContent = attentionScore;
-                    } else {
-                        circle.className = 'breathing-circle exhale';
-                        text.textContent = 'Breathe Out... 💨';
-                        phase = 'inhale';
+                ]
+            },
+            'emotion-awareness': {
+                title: 'Emotion Awareness Quiz',
+                icon: '💭',
+                theme: 'linear-gradient(135deg, #ff6b6b, #ee5a24)',
+                questions: [
+                    {
+                        question: "When needs are not met, you might feel which of the following?",
+                        options: [
+                            "playful",
+                            "restful",
+                            "happy",
+                            "angry"
+                        ],
+                        correct: 3
+                    },
+                    {
+                        question: "If you notice you're feeling sad or upset, what's a good first step?",
+                        options: [
+                            "Ignore the feeling and hope it goes away",
+                            "Get angry at yourself for feeling that way",
+                            "Pay attention to the feeling and try to understand why",
+                            "Pretend you're feeling something else"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What are the three main types of needs discussed in the lesson?",
+                        options: [
+                            "School, home, and playground needs",
+                            "Physical, emotional, and social needs",
+                            "Morning, afternoon, and evening needs",
+                            "Happy, sad, and angry needs"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "What might you feel when your emotional needs are met?",
+                        options: [
+                            "Sadness and frustration",
+                            "Happiness and contentment",
+                            "Anger and irritation",
+                            "Confusion and anxiety"
+                        ],
+                        correct: 1
+                    },
+                    {
+                        question: "Why is it helpful to understand other people's emotions?",
+                        options: [
+                            "So we can make fun of how they feel",
+                            "So we can ignore them better",
+                            "So we can understand their needs and help them",
+                            "So we can tell them to feel differently"
+                        ],
+                        correct: 2
                     }
-                }, 3000);
+                ]
+            },
+            'personal-care': {
+                title: 'Personal Care Quiz',
+                icon: '🌟',
+                theme: 'linear-gradient(135deg, #667eea, #764ba2)',
+                questions: [
+                    {
+                        question: "What are some things that can help you get your personal needs met?",
+                        options: [
+                            "paying attention to what makes me feel happy or fulfilled",
+                            "paying attention to what other people want",
+                            "tending only to others",
+                            "not listening to or feeling my sensations"
+                        ],
+                        correct: 0
+                    }
+                ]
+            },
+            'emotion-families': {
+                title: 'Emotion Families Quiz',
+                icon: '🎭',
+                theme: 'linear-gradient(135deg, #fd79a8, #e84393)',
+                questions: [
+                    {
+                        question: "Which of the following emotions do not belong in the same \"emotion family\"?",
+                        options: [
+                            "happy",
+                            "joyful",
+                            "frustrated",
+                            "excited"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "What are \"emotion families\"?",
+                        options: [
+                            "Groups of people who feel the same way",
+                            "Emotions that don't go together",
+                            "Emotions that share similarities and can be grouped together",
+                            "Family members who show emotions"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "Which of these emotions belongs to the \"happy\" family?",
+                        options: [
+                            "Nervous",
+                            "Gloomy",
+                            "Joyful",
+                            "Angry"
+                        ],
+                        correct: 2
+                    },
+                    {
+                        question: "If someone is feeling \"frustrated,\" which emotion family might that belong to?",
+                        options: [
+                            "Happy family",
+                            "Angry family",
+                            "Scared family",
+                            "Sad family"
+                        ],
+                        correct: 1
+                    }
+                ]
             }
-        }
-
-        function stopBreathing() {
-            if (breathingActive) {
-                clearInterval(breathingInterval);
-                breathingActive = false;
-                const circle = document.getElementById('breathingCircle');
-                const text = document.getElementById('breathingText');
-                circle.className = 'breathing-circle';
-                circle.textContent = 'Great Job!';
-                text.textContent = 'Excellent breathing practice! Click to try again.';
-            }
-        }
-
-        function selectEmotion(emotionName, emoji) {
-            const feedback = document.getElementById('emotionFeedback');
-            feedback.innerHTML = `
-                <div class="feedback">
-                    You selected ${emotionName} ${emoji}! It's wonderful that you can recognize how you're feeling. 
-                    All emotions are okay to have. Understanding our emotions helps us take better care of ourselves and connect with others. 💝
-                </div>
-            `;
-            attentionScore += 5;
-            document.getElementById('attentionScore').textContent = attentionScore;
-        }
-
-        function checkFocus() {
-            const feedback = document.getElementById('focusFeedback');
-            feedback.innerHTML = `
-                <div class="feedback">
-                    Great focus! There were 6 stars (⭐) in the sequence. 
-                    Paying attention to details helps us learn better and stay present in the moment! 🎯
-                </div>
-            `;
-            attentionScore += 10;
-            document.getElementById('attentionScore').textContent = attentionScore;
-        }
-
-        // Initialize the website
-        window.onload = function() {
-            showHome();
         };
-    </script>
-</body>
-</html>
+
+        // Quiz Functions
+        function showQuizSelection() {
+            document.querySelector('.quiz-selection').style.display = 'block';
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('quiz-results').style.display = 'none';
+        }
+
+        function startQuiz(quizType) {
+            currentQuiz = quizType;
+            currentQuestionIndex = 0;
+            quizScore = 0;
+            selectedAnswer = null;
+            
+            const quiz = quizzes[quizType];
+            document.getElementById('quiz-icon').textContent = quiz.icon;
+            document.getElementById('quiz-title').textContent = quiz.title;
+            
+            document.querySelector('.quiz-selection').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'block';
+            document.getElementById('quiz-results').style.display = 'none';
+            
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const quiz = quizzes[currentQuiz];
+            const question = quiz.questions[currentQuestionIndex];
+            
+            document.getElementById('question-number').textContent = `Question ${currentQuestionIndex + 1} of ${quiz.questions.length}`;
+            
+            const progress = ((currentQuestionIndex + 1) / quiz.questions.length) * 100;
+            document.getElementById('progress-fill').style.width = progress + '%';
+            
+            document.getElementById('quiz-question-container').innerHTML = `
+                <div style="font-size: 1.3em; font-weight: 600; color: #2f3542; margin-bottom: 25px; line-height: 1.4;">
+                    ${question.question}
+                </div>
+                <div style="display: grid; gap: 15px;">
+                    ${question.options.map((option, index) => `
+                        <div class="quiz-option" onclick="selectQuizAnswer(${index})" style="background: #f8f9fa; border: 2px solid #e9ecef; border-radius: 12px; padding: 15px 20px; cursor: pointer; transition: all 0.3s ease; font-size: 1.1em;">
+                            <span style="font-weight: bold; margin-right: 10px; color: #6c757d;">${String.fromCharCode(97 + index)})</span>
+                            ${option}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            updateQuizNavigation();
+            selectedAnswer = null;
+        }
+
+        function selectQuizAnswer(answerIndex) {
+            if (selectedAnswer !== null) return;
+
+            selectedAnswer = answerIndex;
+            const options = document.querySelectorAll('.quiz-option');
+            const correctIndex = quizzes[currentQuiz].questions[currentQuestionIndex].correct;
+
+            options.forEach((option, index) => {
+                option.style.pointerEvents = 'none';
+                option.style.opacity = '0.7';
+                if (index === correctIndex) {
+                    option.style.borderColor = '#27ae60';
+                    option.style.background = 'linear-gradient(135deg, #d4edda, #c3e6cb)';
+                    option.style.color = '#155724';
+                } else if (index === answerIndex && index !== correctIndex) {
+                    option.style.borderColor = '#e74c3c';
+                    option.style.background = 'linear-gradient(135deg, #f8d7da, #f5c6cb)';
+                    option.style.color = '#721c24';
+                }
+                if (index === answerIndex) {
+                    option.style.background = option.style.background || 'linear-gradient(135deg, #e3f2fd, #f3e5f5)';
+                }
+            });
+
+            if (answerIndex === correctIndex) {
+                quizScore++;
+            }
+
+            document.getElementById('next-btn').disabled = false;
+        }
+
+        function nextQuestion() {
+            if (selectedAnswer === null) return;
+
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizzes[currentQuiz].questions.length) {
+                displayQuestion();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        }
+
+        function updateQuizNavigation() {
+            document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+            document.getElementById('next-btn').disabled = true;
+            
+            if (currentQuestionIndex === quizzes[currentQuiz].questions.length - 1) {
+                document.getElementById('next-btn').textContent = 'Finish Quiz';
+            } else {
+                document.getElementById('next-btn').textContent = 'Next Question';
+            }
+        }
+
+        function showQuizResults() {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('quiz-results').style.display = 'block';
+
+            const quiz = quizzes[currentQuiz];
+            const percentage = Math.round((quizScore / quiz.questions.length) * 100);
+            
+            document.getElementById('score-circle').textContent = percentage + '%';
+
+            let message, emoji;
+            if (percentage >= 90) {
+                message = "Outstanding! You have excellent understanding!";
+                emoji = "🏆";
+                document.getElementById('score-circle').style.background = 'linear-gradient(135deg, #f39c12, #e74c3c)';
+            } else if (percentage >= 80) {
+                message = "Great job! You have a solid grasp of the concepts!";
+                emoji = "🎉";
+                document.getElementById('score-circle').style.background = 'linear-gradient(135deg, #27ae60, #2ecc71)';
+            } else if (percentage >= 70) {
+                message = "Good work! You're developing good understanding!";
+                emoji = "👍";
+                document.getElementById('score-circle').style.background = 'linear-gradient(135deg, #3498db, #2980b9)';
+            } else if (percentage >= 60) {
+                message = "Keep practicing to improve your understanding!";
+                emoji = "😊";
+                document.getElementById('score-circle').style.background = 'linear-gradient(135deg, #f39c12, #d35400)';
+            } else {
+                message = "Keep learning! Review and try again!";
+                emoji = "📚";
+                document.getElementById('score-circle').style.background = 'linear-gradient(135deg, #95a5a6, #7f8c8d)';
+            }
+
+            document.getElementById('result-emoji').textContent = emoji;
+            document.getElementById('score-text').textContent = message;
+            document.getElementById('score-details').innerHTML = `
+                <h3>Quiz Results</h3>
+                <p><strong>Quiz:</strong> ${quiz.title}</p>
+                <p><strong>Questions Answered Correctly:</strong> ${quizScore} out of ${quiz.questions.length}</p>
+                <p><strong>Accuracy:</strong> ${percentage}%</p>
+                <p><strong>Grade:</strong> ${getQuizLetterGrade(percentage)}</p>
+            `;
+
+            // Mark quiz as completed
+            markQuizCompleted(currentQuiz, percentage);
+        }
+
+        function getQuizLetterGrade(percentage) {
+            if (percentage >= 90) return 'A';
+            if (percentage >= 80) return 'B';
+            if (percentage >= 70) return 'C';
+            if (percentage >= 60) return 'D';
+            return 'F';
+        }
+
+        function markQuizCompleted(quizType, score) {
+            const statusElement = document.getElementById(quizType + '-status');
+            if (score >= 80) {
+                statusElement.textContent = '✅';
+                statusElement.style.color = '#27ae60';
+            } else {
+                statusElement.textContent = '⚠️';
+                statusElement.style.color = '#f39c12';
+            }
+        }
+
+        function backToQuizSelection() {
+            showQuizSelection();
+        }
+
+        function retakeCurrentQuiz() {
+            if (currentQuiz) {
+                startQuiz(currentQuiz);
+            }
+        }
