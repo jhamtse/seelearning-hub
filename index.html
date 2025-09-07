@@ -1,0 +1,930 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;SEE Learning Interactive Hub&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Header */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.95);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 2px 20px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.logo {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.8rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-menu {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-menu a {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: 500;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: color 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-menu a:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Main Content */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.main-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 80px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 1200px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Hero Section */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hero {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 4rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hero h1 {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-shadow: 2px 2px 4px rgba(0,0,0,0.3);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hero p {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.3rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-left: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-right: auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.9;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cta-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #f093fb, #f5576c);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 1rem 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-decoration: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cta-button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 8px 25px rgba(240, 147, 251, 0.6);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Games Section */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.games-section {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.95);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>backdrop-filter: blur(10px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 2rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.section-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.games-grid {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 5px 20px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid transparent;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-card:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-5px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(0,0,0,0.15);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #667eea;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-icon {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-title {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-description {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #666;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-features {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>list-style: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-features li {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-left: 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-features li::before {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>content: "✓";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #4CAF50;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.play-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #667eea, #764ba2);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.8rem 1.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.play-button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Game Container */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: rgba(255, 255, 255, 0.98);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 2rem 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-container.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-header {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 2rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-bottom: 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 2px solid #f0f0f0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.back-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f0f0f0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.5rem 1rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.back-button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #e0e0e0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Game-specific styles */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.resilient-character {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 120px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 120px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.5s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 3em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: float 3s ease-in-out infinite;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes float {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0%, 100% { transform: translateY(0px); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>50% { transform: translateY(-10px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.resilient {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #90EE90, #98FB98);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 4px solid #32CD32;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 20px rgba(50, 205, 50, 0.3);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.high-zone {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #FFB6C1, #FFA07A);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 4px solid #FF6347;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 20px rgba(255, 99, 71, 0.3);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: shake 0.5s ease-in-out infinite;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.low-zone {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #B0C4DE, #D3D3D3);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 4px solid #708090;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 20px rgba(112, 128, 144, 0.3);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0.7;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes shake {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0%, 100% { transform: translateX(0) translateY(-10px); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>25% { transform: translateX(-5px) translateY(-10px); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>75% { transform: translateX(5px) translateY(-10px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.zone-indicator {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.3em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.scenario-box {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f0f8ff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-left: 5px solid #4CAF50;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tools-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tool-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #4CAF50, #45a049);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 25px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 8px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tool-button:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-2px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 6px 12px rgba(0,0,0,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.breathing-circle {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 150px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 150px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #667eea, #764ba2);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.5em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 1s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.breathing-circle.inhale {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(1.4);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #f093fb, #f5576c);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.breathing-circle.exhale {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: scale(0.8);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #4facfe, #00f2fe);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.activity-tabs {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-wrap: wrap;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-button {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f0f0f0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tab-button.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: linear-gradient(45deg, #667eea, #764ba2);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-grid {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-card {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: all 0.3s ease;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid #f0f0f0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-card:hover {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-3px);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #667eea;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 5px 15px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.emotion-emoji {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.5em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.feedback {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #e8f5e8;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid #4CAF50;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #2E8B57;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.game-stats {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #f8f9fa;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 20px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.stat-item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #667eea;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* Mobile Responsive */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media (max-width: 768px) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>.hero h1 {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>font-size: 2.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>.games-grid {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>grid-template-columns: 1fr;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>.tools-container {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>.tool-button {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>width: 80%;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>max-width: 300px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>.nav-menu {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Header --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="nav-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;a href="#" class="logo" onclick="showHome()"&gt;🧠💝 SEE Learning Hub&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;nav class="nav-menu"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;a href="#" onclick="showHome()"&gt;Home&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;a href="#games"&gt;Games&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Main Content --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="main-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Home Page --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="home-page"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Hero Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;section class="hero"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h1&gt;SEE Learning Interactive Hub&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Develop awareness, compassion, and engagement through fun, research-based games and activities. Perfect for schools implementing Social, Emotional, and Ethical Learning.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="cta-button" onclick="document.getElementById('games').scrollIntoView({behavior: 'smooth'})"&gt;Start Learning&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Games Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;section id="games" class="games-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="section-title"&gt;Interactive Learning Games&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="games-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="game-card" onclick="playGame('resilient-zone')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="game-icon"&gt;🌟&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="game-title"&gt;Resilient Zone Adventure&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="game-description"&gt;Help our friend stay balanced using body regulation skills and nervous system awareness.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;ul class="game-features"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Learn about the three zones (Resilient, High, Low)&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Practice grounding, breathing, and resourcing&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Build emotional regulation skills&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Trauma-informed approach&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button class="play-button"&gt;Play Now&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="game-card" onclick="playGame('mindful-heart')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="game-icon"&gt;🧠💝&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="game-title"&gt;Mindful Heart Explorer&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="game-description"&gt;Train attention and explore emotions through mindfulness and emotional literacy activities.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;ul class="game-features"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Mindful breathing practice&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Emotion detective scenarios&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Focus training games&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;li&gt;Body awareness exercises&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/ul&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;button class="play-button"&gt;Play Now&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- About Section --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;section id="about" class="games-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="section-title"&gt;About SEE Learning&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p style="text-align: center; font-size: 1.1rem; line-height: 1.8; max-width: 800px; margin: 0 auto;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>Social, Emotional, and Ethical (SEE) Learning is a comprehensive framework developed by Emory University that integrates mindfulness, compassion, and systems thinking into education. Our interactive platform brings these evidence-based concepts to life through engaging games and activities that help students develop crucial life skills.</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Resilient Zone Game --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="resilient-zone-game" class="game-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="game-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2&gt;🌟 Resilient Zone Adventure&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="back-button" onclick="showHome()"&gt;← Back to Games&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="resilient-character resilient" id="character" onclick="nextScenario()"&gt;😊&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="zone-indicator" id="zoneText"&gt;In the Resilient Zone - Feeling Balanced! 🌟&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="scenario-box" id="scenario"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Welcome! Click on our friend above to see how they're feeling. When they move out of the green Resilient Zone, use the SEE Learning tools below to help them return to balance.</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="tools-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="tool-button" onclick="useBreathing()"&gt;🌬️ Deep Breathing&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="tool-button" onclick="useGrounding()"&gt;🌱 Grounding&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="tool-button" onclick="useResource()"&gt;💝 Think Good Thoughts&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="tool-button" onclick="useMovement()"&gt;🏃 Movement Break&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="feedback" class="feedback" style="display: none;"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="game-stats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="stat-item"&gt;Resilience Points: &lt;span id="resilienceScore"&gt;0&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="stat-item"&gt;Scenarios Completed: &lt;span id="scenarioCount"&gt;0&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Mindful Heart Game --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="mindful-heart-game" class="game-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="game-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2&gt;🧠💝 Mindful Heart Explorer&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="back-button" onclick="showHome()"&gt;← Back to Games&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="activity-tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="tab-button active" onclick="showActivity('breathing')"&gt;🌬️ Breathing&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="tab-button" onclick="showActivity('emotions')"&gt;❤️ Emotions&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="tab-button" onclick="showActivity('focus')"&gt;🎯 Focus&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="activity-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Content will be loaded here --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="game-stats"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="stat-item"&gt;Attention Points: &lt;span id="attentionScore"&gt;0&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="stat-item"&gt;Mindful Minutes: &lt;span id="mindfulMinutes"&gt;0&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/main&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Game state variables</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentZone = 'resilient';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let resilienceScore = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let scenarioCount = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let attentionScore = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let mindfulMinutes = 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let breathingActive = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let breathingInterval;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Scenarios for Resilient Zone game</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const scenarios = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "Oh no! Our friend just heard some loud, unexpected noises and feels startled and anxious.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>zone: 'high',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emotion: '😰'</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "Our friend is feeling overwhelmed by too much homework and tests coming up.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>zone: 'high',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emotion: '😫'</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "It's been a long day and our friend feels tired, sad, and disconnected.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>zone: 'low',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emotion: '😔'</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "Our friend is worried about making new friends at school.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>zone: 'high',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emotion: '😟'</p>
+<p class="p1"><span class="Apple-converted-space">            </span>},</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text: "After lunch, our friend feels sleepy and unmotivated.",</p>
+<p class="p1"><span class="Apple-converted-space">                </span>zone: 'low',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>emotion: '😴'</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentScenarioIndex = 0;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Navigation functions</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showHome() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('home-page').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('resilient-zone-game').classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('mindful-heart-game').classList.remove('active');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function playGame(gameType) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('home-page').style.display = 'none';</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (gameType === 'resilient-zone') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('resilient-zone-game').classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resetResilientGame();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (gameType === 'mindful-heart') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('mindful-heart-game').classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showActivity('breathing');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Resilient Zone Game Functions</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function resetResilientGame() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentZone = 'resilient';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentScenarioIndex = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateCharacter('resilient', '😊');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('scenario').textContent = "Welcome! Click on our friend above to see how they're feeling. When they move out of the green Resilient Zone, use the SEE Learning tools below to help them return to balance.";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>hideFeedback();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateCharacter(zone, emotion) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const character = document.getElementById('character');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const zoneText = document.getElementById('zoneText');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>character.className = `resilient-character ${zone}`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>character.textContent = emotion;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>switch(zone) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'resilient':</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>zoneText.textContent = 'In the Resilient Zone - Feeling Balanced! 🌟';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'high':</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>zoneText.textContent = 'In the High Zone - Feeling Anxious or Overwhelmed 🔥';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'low':</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>zoneText.textContent = 'In the Low Zone - Feeling Tired or Disconnected 🌧️';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>break;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentZone = zone;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function nextScenario() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentZone === 'resilient' &amp;&amp; currentScenarioIndex &lt; scenarios.length) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const scenario = scenarios[currentScenarioIndex];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('scenario').textContent = scenario.text;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateCharacter(scenario.zone, scenario.emotion);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentScenarioIndex++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (currentScenarioIndex &gt;= scenarios.length) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>currentScenarioIndex = 0; // Reset for replay</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showFeedback(message) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const feedback = document.getElementById('feedback');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedback.textContent = message;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedback.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(hideFeedback, 3000);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function hideFeedback() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('feedback').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateScore(points) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>resilienceScore += points;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('resilienceScore').textContent = resilienceScore;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentZone !== 'resilient') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>scenarioCount++;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById('scenarioCount').textContent = scenarioCount;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function useBreathing() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentZone !== 'resilient') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateCharacter('resilient', '😊');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback('Deep breathing helped calm the nervous system! 🌬️ Taking slow, deep breaths activates our body\'s relaxation response.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateScore(10);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('scenario').textContent = "Great job! Click on our friend for the next challenge.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 2000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback('Nice practice! Deep breathing always helps us stay centered. 🧘‍♀️');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateScore(5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function useGrounding() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentZone !== 'resilient') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateCharacter('resilient', '😊');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback('Grounding worked! 🌱 Feeling our feet on the ground and noticing what supports us helps us feel safe and stable.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateScore(10);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('scenario').textContent = "Great job! Click on our friend for the next challenge.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 2000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback('Great grounding practice! 🦶 Connecting with what supports us builds resilience.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateScore(5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function useResource() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentZone !== 'resilient') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateCharacter('resilient', '😊');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback('Thinking of something good helped! 💝 Remembering positive people, places, or experiences helps our nervous system feel safe.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateScore(10);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('scenario').textContent = "Great job! Click on our friend for the next challenge.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 2000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback('Beautiful! 🌟 Focusing on our resources strengthens our inner resilience.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateScore(5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function useMovement() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentZone !== 'resilient') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateCharacter('resilient', '😊');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback('Movement helped! 🏃 Physical activity helps release stress and brings us back to balance.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateScore(10);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.getElementById('scenario').textContent = "Great job! Click on our friend for the next challenge.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 2000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showFeedback('Great movement! 💪 Moving our body helps keep our energy balanced.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateScore(5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Mindful Heart Game Functions</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function showActivity(activityType) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Update tab buttons</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.tab-button').forEach(btn =&gt; btn.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>event.target.classList.add('active');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const content = document.getElementById('activity-content');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (activityType === 'breathing') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>content.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="text-align: center;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;🌬️ Mindful Breathing Practice&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Follow the circle as it grows and shrinks. Breathe in when it grows, breathe out when it shrinks.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="breathing-circle" id="breathingCircle" onclick="toggleBreathing()"&gt;Click to Start&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p id="breathingText"&gt;Click the circle to begin breathing practice&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="tool-button" onclick="stopBreathing()" style="margin-top: 15px;"&gt;Stop Practice&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (activityType === 'emotions') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>content.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="text-align: center;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;❤️ Emotion Detective&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p id="emotionPrompt"&gt;How are you feeling right now? Click on the emotion that matches your current feeling:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="emotion-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="emotion-card" onclick="selectEmotion('Happy', '😊')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="emotion-emoji"&gt;😊&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;Happy&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="emotion-card" onclick="selectEmotion('Sad', '😢')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="emotion-emoji"&gt;😢&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;Sad&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="emotion-card" onclick="selectEmotion('Excited', '🤩')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="emotion-emoji"&gt;🤩&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;Excited&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="emotion-card" onclick="selectEmotion('Worried', '😰')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="emotion-emoji"&gt;😰&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;Worried&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="emotion-card" onclick="selectEmotion('Calm', '😌')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="emotion-emoji"&gt;😌&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;Calm&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="emotion-card" onclick="selectEmotion('Confused', '🤔')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="emotion-emoji"&gt;🤔&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div&gt;Confused&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="emotionFeedback" style="margin-top: 20px; min-height: 50px;"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (activityType === 'focus') {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>content.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="text-align: center;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3&gt;🎯 Focus Training&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Count how many ⭐ stars you can find in the sequence below:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div style="font-size: 2em; line-height: 1.5; margin: 20px 0; background: #f8f9fa; padding: 20px; border-radius: 10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>⭐ 🌙 ⭐ 🌟 ⭐ 🌙 ⭐ 🌟 ⭐ 🌙 ⭐</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="tool-button" onclick="checkFocus()"&gt;I counted them!&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="focusFeedback" style="margin-top: 20px; min-height: 50px;"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function toggleBreathing() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!breathingActive) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>startBreathing();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function startBreathing() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const circle = document.getElementById('breathingCircle');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const text = document.getElementById('breathingText');</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!breathingActive) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>breathingActive = true;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let phase = 'inhale';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let seconds = 0;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>circle.textContent = 'Breathe In';</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>breathingInterval = setInterval(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>seconds++;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (seconds % 30 === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>mindfulMinutes++;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>document.getElementById('mindfulMinutes').textContent = mindfulMinutes;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>if (phase === 'inhale') {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>circle.className = 'breathing-circle inhale';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>text.textContent = 'Breathe In... 🌬️';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>phase = 'exhale';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>attentionScore += 1;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>document.getElementById('attentionScore').textContent = attentionScore;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>circle.className = 'breathing-circle exhale';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>text.textContent = 'Breathe Out... 💨';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>phase = 'inhale';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 3000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function stopBreathing() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (breathingActive) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>clearInterval(breathingInterval);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>breathingActive = false;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const circle = document.getElementById('breathingCircle');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const text = document.getElementById('breathingText');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>circle.className = 'breathing-circle';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>circle.textContent = 'Great Job!';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>text.textContent = 'Excellent breathing practice! Click to try again.';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function selectEmotion(emotionName, emoji) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const feedback = document.getElementById('emotionFeedback');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedback.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="feedback"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>You selected ${emotionName} ${emoji}! It's wonderful that you can recognize how you're feeling.<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>All emotions are okay to have. Understanding our emotions helps us take better care of ourselves and connect with others. 💝</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>attentionScore += 5;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('attentionScore').textContent = attentionScore;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function checkFocus() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const feedback = document.getElementById('focusFeedback');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>feedback.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="feedback"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Great focus! There were 6 stars (⭐) in the sequence.<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>Paying attention to details helps us learn better and stay present in the moment! 🎯</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>attentionScore += 10;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('attentionScore').textContent = attentionScore;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Initialize the website</p>
+<p class="p1"><span class="Apple-converted-space">        </span>window.onload = function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showHome();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
